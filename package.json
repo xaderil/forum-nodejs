@@ -1,0 +1,24 @@
+{
+  "name": "forumnodejs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xaderil/forum-nodejs.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xaderil/forum-nodejs/issues"
+  },
+  "homepage": "https://github.com/xaderil/forum-nodejs#readme",
+  "dependencies": {
+    "all": "0.0.0",
+    "ejs": "^2.5.8",
+    "express": "^4.16.3"
+  }
+}
