@@ -6,7 +6,11 @@
   <title>Document</title>
 </head>
 <body>
-Коллекция 1
+<% makethems.forEach(function(makethem){ %>
+
+  <a href="/<%= makethem.body %>"><%= makethem.body %></a><br/>
+
+<% }) %>
 <div><a href="/makethema">Создать тему</a></div>
 </body>
 </html>
