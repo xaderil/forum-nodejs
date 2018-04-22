@@ -18,7 +18,19 @@
   "homepage": "https://github.com/xaderil/forum-nodejs#readme",
   "dependencies": {
     "all": "0.0.0",
+    "body-parser": "^1.18.2",
+    "child_process": "^1.0.2",
     "ejs": "^2.5.8",
-    "express": "^4.16.3"
+    "express": "^4.16.3",
+    "mongoose": "^5.0.15"
+  },
+  "devDependencies": {
+    "cross-env": "^5.1.4",
+    "eslint": "^4.19.1",
+    "eslint-plugin-node": "^6.0.1",
+    "ws": "3.3.2"
+  },
+  "engines": {
+    "node": ">=6.0.0"
   }
 }

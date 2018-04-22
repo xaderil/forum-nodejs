@@ -1,12 +1,11 @@
-var express = require("express")
-var app = express()
-app.set('view engine', 'ejs');
-app.use('/public', express.static('public'));
+const app = require('./app');
+const database = require('./database');
+const config = require('./config');
 
-app.get('/', function(req, res) {
-  res.render('index', {someInfo: "Данные для передачи"});
-});
-
-app.listen(8080, function(){
-  console.log("Server has been started")
-})
+database()
+  .then(info => {
+    console.log(`Connected to ${info.host}:${info.port}/${info.name}`);
+    app.listen(config.PORT, () =>
+      console.log(`Example app listening on port!`)
+    );
+  });
