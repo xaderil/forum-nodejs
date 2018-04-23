@@ -6,6 +6,6 @@ database()
   .then(info => {
     console.log(`Connected to ${info.host}:${info.port}/${info.name}`);
     app.listen(config.PORT, () =>
-      console.log(`Example app listening on port!`)
+      console.log(`Forum app listening on port 8080!`)
     );
   });

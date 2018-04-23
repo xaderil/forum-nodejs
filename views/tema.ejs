@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <% include blocks/links.ejs %>
+  <title>Document</title>
+</head>
+<body>
+<h1>Тема <%= id %></h1><br/>
+<a href="/razdel1">Перейти в раздел 1</a>
+<form method="post">
+  <input name="body" type="text" cols="40" rows="3" value="Текст"><br/>
+  <input name="user" type="text" cols="15"  value="Ваше имя" ><br/>
+  <input type="submit" value="Ответить">
+</form>
+</body>
+</html>
