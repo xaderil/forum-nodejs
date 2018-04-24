@@ -4,14 +4,23 @@
   <meta charset="UTF-8">
   <% include blocks/links.ejs %>
   <title>Document</title>
+  <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
+  <script>tinymce.init({ selector:'textarea' });</script>
 </head>
 <body>
 <h1>Тема <%= id %></h1><br/>
 <a href="/razdel1">Перейти в раздел 1</a>
-<form method="post">
-  <input name="body" type="text" cols="40" rows="3" value="Текст"><br/>
-  <input name="user" type="text" cols="15"  value="Ваше имя" ><br/>
-  <input type="submit" value="Ответить">
-</form>
+<% doc.forEach(function(element){ %>
+  <div class="post">
+    <div>Написал: <b><%= element.user %></b></div>
+    <div class="text"><%- element.body %></div>
+  </div>
+  <hr/>
+  <% }) %>
+  <form method="post">
+    <textarea name="body"></textarea><br/>
+    <input name="user" type="text" cols="15"  value="Ваше имя" ><br/>
+    <input type="submit" value="Ответить">
+  </form>
 </body>
 </html>

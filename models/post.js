@@ -1,6 +1,7 @@
 var mongoose = require("mongoose")
 var Schema = mongoose.Schema
 
+
 var post = new Schema({
   body: {
     type: String,
@@ -8,8 +9,9 @@ var post = new Schema({
   },
   user: {
     type: String,
-    required: true
+    required: true,
+    default: "Аноним"
   }
 })
 
-module.exports = mongoose.model("post", post)
+module.exports = post
