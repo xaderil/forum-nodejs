@@ -4,7 +4,8 @@
   <meta charset="UTF-8">
   <% include blocks/links.ejs %>
   <title>Document</title>
-
+  <script src="../tinymce/tinymce.min.js"></script>
+  <script>tinymce.init({ selector:'textarea' });</script>
 </head>
 <body>
 <h1>Тема <%= id %></h1><br/>

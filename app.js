@@ -6,10 +6,11 @@ var makethem = require("./models/makethem")
 var post = require("./models/post")
 var fs = require("fs")
 var mongoose = require("mongoose")
-var $ = require("jquery")
 app.set('view engine', 'ejs');
 app.use('/public', express.static('public'));
-app.use(bodyParser.urlencoded({extended:true}))
+app.use(bodyParser.urlencoded({
+  extended: true
+}))
 
 
 
@@ -64,20 +65,27 @@ app.get('/razdel1/:id', function(req, res) {
         })
       }
     })
-  })
-  app.post('/razdel1/:id', function(req, res) {
-    var a = req.body;
-    var href1 = req.params.id
-    var Post = mongoose.model(href1, post)
-    Post.create(a).then(function(){
-      Post.find({}).then(function(doc){
-        res.render(href1, {
-          id: href1,
-          doc: doc
-        })
+})
+app.post('/razdel1/:id', function(req, res) {
+  var a = req.body;
+  var href1 = req.params.id
+  var Post = mongoose.model(href1, post)
+
+  if(a.user == "Ваше имя") {
+    a.user = "Аноним"
+  }
+  Post.create(a).then(function() {
+    Post.find({}).then(function(doc) {
+      res.render(href1, {
+        id: href1,
+        doc: doc
       })
     })
   })
+})
+app.use(function(req, res, next) {
+  res.status(404).send('Страница не найдена');
+});
 
 
 
@@ -86,5 +94,4 @@ app.get('/razdel1/:id', function(req, res) {
 
 
 
-
-  module.exports = app;
+module.exports = app;
