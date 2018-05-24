@@ -1,0 +1,14 @@
+{
+  "MONGO_URL": "mongodb://localhost/test",
+  "PORT":8080,
+  "session": {
+    "secret": "B3120ATPiP",
+    "key": "sid",
+    "cookie": {
+      "path": "/",
+      "httpOnly": true,
+      "maxAge": null
+    }
+  }
+
+}

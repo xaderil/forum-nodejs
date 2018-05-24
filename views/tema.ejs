@@ -1,14 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <% include blocks/links.ejs %>
-  <title>Document</title>
-
-</head>
-<body>
+<% include layout/header.ejs %>
 <h1>Тема <%= id %></h1><br/>
 <a href="/razdel1">Перейти в раздел 1</a>
+<div class="login"><a href="/login">Войти</a></div>
 <% doc.forEach(function(element){ %>
   <div class="post">
     <div>Написал: <b><%= element.user %></b></div>
@@ -28,5 +21,4 @@
            ><br/>
     <input type="submit" value="Ответить" class="inputsubmit">
   </form>
-</body>
-</html>
+  <% include layout/footer.ejs %>

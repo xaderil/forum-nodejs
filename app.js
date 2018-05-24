@@ -6,15 +6,29 @@ var makethem = require("./models/makethem")
 var post = require("./models/post")
 var fs = require("fs")
 var mongoose = require("mongoose")
+var session = require("express-session")
+var MongoStore = require('connect-mongo')(session);
+var cookieParser = require("cookie-parser")
 app.set('view engine', 'ejs');
 app.use('/public', express.static('public'));
+app.use('/dist', express.static('dist'));
+app.use(cookieParser())
 app.use(bodyParser.urlencoded({
   extended: true
 }))
+app.use(session({
+  secret: config.session.secret,
+  name: config.session.key,
+  cookie: config.session.cookie,
+  store: new MongoStore({mongooseConnection: mongoose.connection}),
+  saveUninitialized: false,
+  resave: false
+}))
 
-
-
-
+// app.use(function(req,res){
+//   req.session.numberOfVisits = 1 + req.session.numberOfVisits || 1;
+//   res.send("Visits:" + req.session.numberOfVisits);
+// })
 app.get('/', function(req, res) {
   res.render('index');
 });
@@ -48,23 +62,23 @@ app.post('/makethema', function(req, res) {
 app.get('/razdel1/:id', function(req, res) {
   var id = req.params.id
   makethem.find({
-      body: id
-    })
-    .then(function(doc) {
-      var p = doc.length
-      console.log(p);
-      if (p == 0) {
-        res.send("Запрашиваемая тема не найдена")
-      } else {
-        var Post = mongoose.model(id, post)
-        Post.find({}).then(function(doc) {
-          res.render(id, {
-            id: id,
-            doc: doc
-          })
+    body: id
+  })
+  .then(function(doc) {
+    var p = doc.length
+    console.log(p);
+    if (p == 0) {
+      res.send("Запрашиваемая тема не найдена")
+    } else {
+      var Post = mongoose.model(id, post)
+      Post.find({}).then(function(doc) {
+        res.render(id, {
+          id: id,
+          doc: doc
         })
-      }
-    })
+      })
+    }
+  })
 })
 app.post('/razdel1/:id', function(req, res) {
   var a = req.body;
@@ -83,14 +97,13 @@ app.post('/razdel1/:id', function(req, res) {
     })
   })
 })
-app.use(function(req, res, next) {
-  res.status(404).send('Страница не найдена');
+app.get("/login", function(req, res){
+  res.render("login")
+})
+
+app.use(function (req, res) {
+  res.render("404")
 });
-
-
-
-
-
 
 
 

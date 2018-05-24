@@ -1,16 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <% include blocks/links.ejs %>
-  <title>Document</title>
-</head>
-<body>
+<% include layout/header.ejs %>
+<div class="login"><a href="/login">Войти</a></div>
 <% makethems.forEach(function(makethem){ %>
 
   <a href="/razdel1/<%= makethem.body %>"><%= makethem.body %></a><br/>
 
 <% }) %>
 <div><a href="/makethema">Создать тему</a></div>
-</body>
-</html>
+<% include layout/footer.ejs %>

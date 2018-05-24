@@ -1,12 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <% include blocks/links.ejs %>
-  <title>Document</title>
-</head>
-<body>
-<h1>Форум</h1><br/>
+<% include layout/headerindex.ejs %>
+
+<div class="container">
+  <div class="row">
+    <div class="col">DSfsdjkhfksdjdhfjsdhЭтот файл будет общим каркасом для страниц, а конкретная вьюха будет рендериться на месте тег
+      Теперь можно убрать лишний код из шаблонов home.ejs и about.ejs. Сейчас они идентичны и мы могли бы воспользоваться одним шаблоном для обоих экшнов, но как правило разные страницы имеют разный код так что представим себе, что он различается.
+      home.ejs и about.ejs:</div>
+      <div class="col">124235345346</div>
+  </div>
+  <div class="row"><div class="col">2143525233</div></div>
+</div>
+
+<br/>
+<div class="login"><a href="/login">Войти</a></div>
 <a href="/razdel1">Раздел 1</a>
-</body>
-</html>
+
+
+<% include layout/footer.ejs %>
